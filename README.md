@@ -8,12 +8,12 @@ Install all node module dependencies before running localy:
 Then in the project directory, you can run:
 ### `npm start`
 
-##Routes
+## Routes
 
 Dashboard Route: http://localhost:3000 
 Login Route: http://localhost:3000/login
 
-##credentials: 
+## credentials: 
 usename: admin
 password: 1234
 
