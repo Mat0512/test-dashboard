@@ -58,7 +58,7 @@ const ReportDetails = () => {
                     <Box display="flex" gap={4}>
                         <div>
                             <Typography fontSize="14px">{`Reporter Name:  ${matchedData.fname}`}</Typography>
-                            <Typography fontSize="14px">{`Reporter:  ${matchedData.addresss}`}</Typography>
+                            <Typography fontSize="14px">{`Address:  ${matchedData.addresss}`}</Typography>
                         </div>
                         <Box>
                             <Typography fontSize="14px">{`Reporter Contact:  ${matchedData.con}`}</Typography>
