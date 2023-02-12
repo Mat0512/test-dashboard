@@ -1,66 +1,57 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../../components/Header";
 import ReportIcon from "@mui/icons-material/Report";
 import { Box } from "@mui/material";
 import StatCard from "../../components/StatCard";
 import ReportTable from "./ReportTable";
-import Map from "./Map";
 import LoadingNotif from "../../components/LoadingNotif";
-import { db } from "../../config/firebase";
-import { ref, get, onValue } from "firebase/database";
-import { parseResult } from "../helper/parseResult";
-
-const reportsRef = ref(db, "Incoming report");
+import HistoryIcon from "@mui/icons-material/History";
+import { ReportsContext } from "../../global-state/useReportsData";
+import { useIncomingReports } from "../../services/useIncomingReports";
+import { useHistoryReports } from "../../services/useHistoryReports";
 
 const Dashboard = () => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        onValue(reportsRef, (snapshot) => {
-            const reports = snapshot.val();
-
-            const parsedRes = parseResult(reports);
-            setData(parsedRes);
-            setIsLoading(false);
-        });
-        // .then((snapshot) => {
-        //     const reports = snapshot.val();
-
-        //     const parsedRes = parseResult(reports);
-        //     setData(parsedRes);
-        // })
-        // .catch((err) => console.log(err))
-        // .finally(() => {
-        //     setIsLoading(false);
-        // });
-    }, []);
+    const { reports } = useContext(ReportsContext);
+    const { incomingReports, incomingCount, isReportLoading } =
+        useIncomingReports(reports);
+    const { historyCount, isHistoryLoading } = useHistoryReports(reports);
 
     return (
         <>
-            {isLoading ? (
+            {!reports || isReportLoading || isHistoryLoading ? (
                 <LoadingNotif />
             ) : (
                 <Box display="flex" flexDirection="column" gap={2}>
-                    <Header title="Incident Reports" />
-                    <StatCard
-                        count="3"
-                        countLabel="Incoming Incidents"
-                        icon={
-                            <ReportIcon
-                                sx={{
-                                    fontSize: "30px",
-                                }}
-                                data={data}
-                            />
-                        }
-                    />
+                    <Header title="Dashboard" />
+                    <Box display="flex" gap={2}>
+                        <StatCard
+                            count={incomingCount}
+                            countLabel="Incoming Reports"
+                            icon={
+                                <ReportIcon
+                                    sx={{
+                                        fontSize: "30px",
+                                    }}
+                                />
+                            }
+                            bgColor="#c40233"
+                        />
+                        <StatCard
+                            count={historyCount}
+                            countLabel="Reports History"
+                            icon={
+                                <HistoryIcon
+                                    sx={{
+                                        fontSize: "30px",
+                                    }}
+                                />
+                            }
+                            bgColor="#e26313"
+                        />
+                    </Box>
 
-                    <ReportTable data={data} />
-
-                    <Header title="Incident Location" />
-                    <Map data={data} />
+                    <Header title="Incoming Reports" />
+                    <ReportTable data={incomingReports} />
                 </Box>
             )}
         </>

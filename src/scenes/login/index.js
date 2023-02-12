@@ -1,6 +1,5 @@
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { useState } from "react";
-import useCheckUser from "../../services/useCheckUser";
 import { db } from "../../config/firebase";
 import { ref, get } from "firebase/database";
 import { LoadingButton } from "@mui/lab";

@@ -8,50 +8,36 @@ const containerStyle = {
     height: "400px",
 };
 
-const center = {
-    lat: 14.5995,
-    lng: 120.9842,
-};
-
-const Map = ({ data }) => {
+const Map = ({ reportData }) => {
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
         googleMapsApiKey: "AIzaSyCQULinj8QffTOZbUWHBb8bAAWut97xbF4",
     });
 
-    const markers = data.length
-        ? data
-              .filter((item) => item?.lat && item?.lng)
-              .map((item, i) => {
-                  return (
-                      <div key={i}>
-                          <MarkerF
-                              position={{
-                                  lat: parseFloat(item.lat),
-                                  lng: parseFloat(item.lng),
-                              }}
-                          />
-                      </div>
-                  );
-              })
-        : null;
-
     return (
         <>
             <Box
                 display="flex"
+                my="5px"
                 flexDirection="column"
                 width="100%"
-                height="40rem"
                 gap={2}
             >
-                {isLoaded ? (
+                {isLoaded && reportData ? (
                     <GoogleMap
                         mapContainerStyle={containerStyle}
-                        center={center}
+                        center={{
+                            lat: parseFloat(reportData.lat),
+                            lng: parseFloat(reportData.lng),
+                        }}
                         zoom={10}
                     >
-                        {markers}
+                        <MarkerF
+                            position={{
+                                lat: parseFloat(reportData.lat),
+                                lng: parseFloat(reportData.lng),
+                            }}
+                        />
                     </GoogleMap>
                 ) : (
                     <LoadingNotif />

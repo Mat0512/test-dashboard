@@ -6,21 +6,16 @@ import {
     TableContainer,
     TableRow,
     TableHead,
+    Button,
+    Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
+// changes: filter table
 const ReportTable = ({ data }) => {
+    const navigate = useNavigate();
     console.log("data: ", data);
     return (
-        //    <Box width="100%" height="350px">
-        //        <DataGrid
-        //            columns={columns}
-        //            rows={rows}
-        //            pageSize={10}
-        //            rowsPerPageOptions={[10]}
-        //            //  getRowClassName={  }
-        //        />
-        //    </Box>
-
         <TableContainer
             component={Box}
             sx={{
@@ -31,26 +26,36 @@ const ReportTable = ({ data }) => {
             <Table>
                 <TableHead>
                     <TableRow>
+                        <TableCell align="left">id</TableCell>
+
                         <TableCell align="left">Date</TableCell>
                         <TableCell align="left">Address</TableCell>
-                        <TableCell align="left">Coordinates</TableCell>
                         <TableCell align="left">Contact Person</TableCell>
                         <TableCell align="left">Contact Number</TableCell>
-                        <TableCell align="left">Contact Email</TableCell>
+                        <TableCell align="left">Action </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {data.map((row) => (
                         <TableRow key={row.id}>
+                            <TableCell align="left">{row.id}</TableCell>
+
                             <TableCell align="left">{row.date}</TableCell>
-                            <TableCell align="left">{row.address}</TableCell>
-                            <TableCell align="left">
-                                {`Latitude: ${row.lat}
-                              Longitude: ${row.lng}`}
-                            </TableCell>
+                            <TableCell align="left">{row.addresss}</TableCell>
                             <TableCell align="left">{row.fname}</TableCell>
                             <TableCell align="left">{row.con}</TableCell>
-                            <TableCell align="left">{row.emais}</TableCell>
+                            <TableCell align="left">
+                                <Button
+                                    variant="contained"
+                                    onClick={() => {
+                                        navigate(`/report-details/${row.id}`);
+                                    }}
+                                >
+                                    <Typography fontSize="12px">
+                                        View
+                                    </Typography>
+                                </Button>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

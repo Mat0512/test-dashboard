@@ -4,10 +4,10 @@ import GroupIcon from "@mui/icons-material/Group";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import HistoryIcon from "@mui/icons-material/History";
 import { Link } from "react-router-dom";
 
-const Sidenav = ({ user }) => {
+const Sidenav = () => {
     const { collapseSidebar, collapsed } = useProSidebar();
 
     return (
@@ -30,6 +30,12 @@ const Sidenav = ({ user }) => {
                 <Menu>
                     <MenuItem component={<Link to="/" />} icon={<HomeIcon />}>
                         <Typography>Dashboard</Typography>
+                    </MenuItem>
+                    <MenuItem
+                        component={<Link to="/report-history" />}
+                        icon={<HistoryIcon />}
+                    >
+                        Report History
                     </MenuItem>
                     <MenuItem
                         component={<Link to="/users" />}

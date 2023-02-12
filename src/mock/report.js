@@ -6,6 +6,7 @@ export const report = [
         date: "02/02/23 20:03:51",
         emais: "dilay10.do@gmail.com",
         fname: "dal",
+        status: "reje   ",
     },
 
     {

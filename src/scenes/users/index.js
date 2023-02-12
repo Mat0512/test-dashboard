@@ -2,44 +2,18 @@ import { Box, Typography, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import Header from "../../components/Header";
-import { useState, useEffect } from "react";
-import { get, ref, remove, onValue } from "firebase/database";
+import { useState } from "react";
+import { ref, remove } from "firebase/database";
 import { db } from "../../config/firebase";
-import { parseResult } from "../helper/parseResult";
+
 import EditForm from "./EditForm";
+import { useUserList } from "../../services/useUserList";
+
 const usersRef = ref(db, "Registered Users");
-
 const Users = () => {
-    const [data, setData] = useState([]);
+    const { data, isLoading } = useUserList(usersRef);
     const [selected, setSelected] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    // const [message, setMessage] = useState("");
     const [open, setOpen] = useState(false);
-
-    useEffect(() => {
-        setIsLoading(true);
-        onValue(usersRef, (snapshot) => {
-            const users = snapshot.val();
-            console.log("res: ", users);
-
-            const parsedRes = parseResult(users);
-            setData(parsedRes);
-            console.log("parse: ", parsedRes);
-        });
-        // .then((snapshot) => {
-        //     const users = snapshot.val();
-        //     console.log("res: ", users);
-
-        //     const parsedRes = parseResult(users);
-        //     setData(parsedRes);
-        //     console.log("parse: ", parsedRes);
-        // })
-        // .catch((err) => console.log(err))
-        // .finally(() => {
-        //     setIsLoading(false);
-        // });
-    }, []);
 
     const editUser = (row) => {
         console.log("data in edit:  ", data);

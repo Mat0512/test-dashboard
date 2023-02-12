@@ -1,22 +1,28 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-const StatCard = ({ icon, count, countLabel }) => {
+const StatCard = ({ icon, count, countLabel, bgColor }) => {
     return (
         <Box
             display="flex"
             my="20px"
             alignItems="center"
-            width="100%"
+            width="230px"
+            height="100px"
             p="15px"
-            backgroundColor="#B33F40"
+            backgroundColor={bgColor}
             color="#ffffff"
             borderRadius="10px"
         >
             {icon}
-            <Typography ml="10px" fontSize="18px" lineHeight={1}>
-                {`${count} ${countLabel}`}
-            </Typography>
+            <Box ml="10px">
+                <Typography fontSize="24px" lineHeight={1}>
+                    {count}
+                </Typography>
+                <Typography fontSize="14px" lineHeight={1}>
+                    {countLabel}
+                </Typography>
+            </Box>
         </Box>
     );
 };
