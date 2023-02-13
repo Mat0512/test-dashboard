@@ -5,7 +5,7 @@ const StatCard = ({ icon, count, countLabel, bgColor }) => {
     return (
         <Box
             display="flex"
-            my="20px"
+            my="5px"
             alignItems="center"
             width="230px"
             height="100px"

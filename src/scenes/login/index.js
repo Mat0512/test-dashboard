@@ -24,7 +24,6 @@ const Login = () => {
     };
 
     const handleSubmit = async (e) => {
-        console.log("helo");
         setErr("");
         setInvalidUsername(false);
         setInvalidPass(false);
@@ -43,7 +42,6 @@ const Login = () => {
             .then((snapshot) => {
                 const users = snapshot.val();
                 let foundUser = null;
-                console.log(users);
 
                 //find user by ename1 or ename1 props
                 for (let userId in users) {
@@ -52,7 +50,6 @@ const Login = () => {
                         break;
                     }
                 }
-                console.log("found user: ", foundUser);
                 //verifying user
                 if (!foundUser) {
                     setErr("User does not exist");
@@ -63,7 +60,6 @@ const Login = () => {
                     setErr("Wrong Credentials");
                     return;
                 } else {
-                    console.log("found: ", validUser);
                     navigate("/");
                 }
             })

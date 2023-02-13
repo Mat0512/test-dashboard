@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 export const useHistoryReports = (reports) => {
     const [historyReports, sethistoryReports] = useState([]);
     const [historyCount, setHistoryCount] = useState(0);
+    const [respondedCount, setRespondedCount] = useState(0);
+    const [declinedCount, setDeclinedCount] = useState(0);
+
     const [isHistoryLoading, setIsHistoryLoading] = useState(false);
 
     useEffect(() => {
@@ -13,11 +16,28 @@ export const useHistoryReports = (reports) => {
             (report) => report.status !== "pending"
         );
 
+        const respondedReports = reports.filter(
+            (report) => report.status == "responded"
+        );
+        const declinedReports = reports.filter(
+            (report) => report.status == "declined"
+        );
+
+        console.log("responded: ", respondedReports);
+
         console.log("filtered history: ", evaluatedRep);
         sethistoryReports(evaluatedRep);
         setHistoryCount(evaluatedRep.length);
+        setRespondedCount(respondedReports.length);
+        setDeclinedCount(declinedReports.length);
         setIsHistoryLoading(false);
     }, [reports]);
 
-    return { historyReports, historyCount, isHistoryLoading };
+    return {
+        historyReports,
+        historyCount,
+        respondedCount,
+        declinedCount,
+        isHistoryLoading,
+    };
 };

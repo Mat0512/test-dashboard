@@ -21,7 +21,6 @@ const History = () => {
     const { historyReports, isHistoryLoading } = useHistoryReports(reports);
     const navigate = useNavigate();
 
-    console.log("history: ", historyReports);
     return (
         <>
             {isHistoryLoading ? (

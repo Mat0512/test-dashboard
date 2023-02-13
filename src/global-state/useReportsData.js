@@ -15,7 +15,6 @@ export const useReportsData = () => {
         setIsLoading(true);
         onValue(reportRef, (snapshot) => {
             const data = snapshot.val();
-            console.log("data at hook: ", data);
             const parsedData = parseResult(data);
             console.log(parsedData);
             setReports(parsedData);

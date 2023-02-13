@@ -15,8 +15,6 @@ const ReportDetails = () => {
 
     useEffect(() => {
         const match = reports.filter((report) => report.id === id);
-        console.log("reports: ", reports);
-        console.log("match: ", match);
 
         setMatchedData(match[0]);
     }, [reports]);
@@ -74,7 +72,7 @@ const ReportDetails = () => {
                                     color: "#fffff",
                                 }}
                                 variant="contained"
-                                onClick={() => setReportStatus("decline")}
+                                onClick={() => setReportStatus("declined")}
                             >
                                 Decline
                             </Button>
@@ -84,7 +82,7 @@ const ReportDetails = () => {
                                     color: "white",
                                 }}
                                 variant="contained"
-                                onClick={() => setReportStatus("respond")}
+                                onClick={() => setReportStatus("responded")}
                             >
                                 Respond
                             </Button>

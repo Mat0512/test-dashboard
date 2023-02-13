@@ -8,7 +8,6 @@ export const useIncomingReports = (reports) => {
 
     useEffect(() => {
         setIsReportLoading(true);
-        console.log("Reports: ", reports);
 
         const incomingRep = reports.filter(
             (report) => report.status == "pending"

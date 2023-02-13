@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 // changes: filter table
 const ReportTable = ({ data }) => {
     const navigate = useNavigate();
-    console.log("data: ", data);
     return (
         <TableContainer
             component={Box}
