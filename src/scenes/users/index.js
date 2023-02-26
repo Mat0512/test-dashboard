@@ -7,7 +7,7 @@ import { ref, remove } from "firebase/database";
 import { db } from "../../config/firebase";
 
 import EditForm from "./EditForm";
-import { useUserList } from "../../services/useUserList";
+import { useUserList } from "../../global-state/services/useUserList";
 
 const usersRef = ref(db, "Registered Users");
 const Users = () => {
@@ -16,15 +16,12 @@ const Users = () => {
     const [open, setOpen] = useState(false);
 
     const editUser = (row) => {
-        console.log("data in edit:  ", data);
         const matchUser = data.filter((d) => d.id === row.id);
-        console.log(matchUser);
         setSelected(matchUser[0]);
         setOpen(true);
     };
 
     const deleteUser = (row) => {
-        console.log(row.id);
         const deleteUserRef = ref(db, `Registered Users/${data.id}`);
         remove(deleteUserRef)
             .then(() => alert("Deleted"))

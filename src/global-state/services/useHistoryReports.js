@@ -5,12 +5,10 @@ export const useHistoryReports = (reports) => {
     const [historyCount, setHistoryCount] = useState(0);
     const [respondedCount, setRespondedCount] = useState(0);
     const [declinedCount, setDeclinedCount] = useState(0);
-
     const [isHistoryLoading, setIsHistoryLoading] = useState(false);
 
     useEffect(() => {
         setIsHistoryLoading(true);
-        console.log("Reports: ", reports);
 
         const evaluatedRep = reports.filter(
             (report) => report.status !== "pending"
@@ -23,9 +21,6 @@ export const useHistoryReports = (reports) => {
             (report) => report.status == "declined"
         );
 
-        console.log("responded: ", respondedReports);
-
-        console.log("filtered history: ", evaluatedRep);
         sethistoryReports(evaluatedRep);
         setHistoryCount(evaluatedRep.length);
         setRespondedCount(respondedReports.length);

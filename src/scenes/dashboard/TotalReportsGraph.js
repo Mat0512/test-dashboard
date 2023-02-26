@@ -17,11 +17,6 @@ const TotalReportsGraph = ({
     totalResponds,
     totalDeclines,
 }) => {
-    console.log("total pendings: ", totalPendings);
-    console.log("total reports: ", totalReports);
-    console.log("total responds: ", totalResponds);
-    console.log("total declines: ", totalDeclines);
-
     const [summaryReport, setSummaryReport] = useState(null);
     useEffect(() => {
         setSummaryReport([

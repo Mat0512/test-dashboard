@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import { ReportsContext } from "../global-state/useReportsData";
+import { useEffect, useState } from "react";
 
 export const useIncomingReports = (reports) => {
     const [incomingReports, setIncomingReports] = useState([]);

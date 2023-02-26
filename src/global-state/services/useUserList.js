@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { parseResult } from "../scenes/helper/parseResult";
+import { parseResult } from "../helper";
 import { onValue, ref } from "firebase/database";
-import { db } from "../config/firebase";
+import { db } from "../../config/firebase";
 
 const usersRef = ref(db, "Registered Users");
 
-export const useUserList = (userRef) => {
+export const useUserList = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 

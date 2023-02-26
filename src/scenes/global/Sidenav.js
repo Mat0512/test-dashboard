@@ -6,6 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import HistoryIcon from "@mui/icons-material/History";
 import { Link } from "react-router-dom";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 
 const Sidenav = () => {
     const { collapseSidebar, collapsed } = useProSidebar();
@@ -42,6 +43,12 @@ const Sidenav = () => {
                         icon={<GroupIcon />}
                     >
                         Users
+                    </MenuItem>
+                    <MenuItem
+                        component={<Link to="/reports" />}
+                        icon={<AssessmentIcon />}
+                    >
+                        Reports
                     </MenuItem>
                 </Menu>
             </Sidebar>

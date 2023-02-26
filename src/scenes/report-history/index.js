@@ -13,7 +13,7 @@ import LoadingNotif from "../../components/LoadingNotif";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import { useContext } from "react";
-import { useHistoryReports } from "../../services/useHistoryReports";
+import { useHistoryReports } from "../../global-state/services/useHistoryReports";
 import { ReportsContext } from "../../global-state/useReportsData";
 
 const History = () => {

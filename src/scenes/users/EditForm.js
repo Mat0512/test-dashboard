@@ -15,23 +15,13 @@ import { set, ref } from "firebase/database";
 import { db } from "../../config/firebase";
 import CloseIcon from "@mui/icons-material/Close";
 const EditForm = ({ data, open, setOpen, setData }) => {
-    console.log("data: ", data);
-    console.log("open: ", open);
-
     const handleChange = (e) => {
-        console.log({ ...data, [e.target.name]: e.target.value });
-        console.log("data data: ", data);
         setData((prevState) => {
-            console.log("prev: ", prevState);
             return {
                 ...prevState,
                 [e.target.name]: e.target.value,
             };
         });
-        //    setData({
-        //        ...data,
-        //        [e.target.name]: e.target.value,
-        //    });
     };
 
     const handleSubmit = () => {

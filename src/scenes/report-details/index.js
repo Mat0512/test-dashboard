@@ -6,6 +6,7 @@ import { useEffect, useContext, useState } from "react";
 import { ReportsContext } from "../../global-state/useReportsData";
 import { ref, set } from "firebase/database";
 import { db } from "../../config/firebase";
+import BarChart from "../reports/BarChart";
 
 const ReportDetails = () => {
     const { reports } = useContext(ReportsContext);

@@ -7,6 +7,7 @@ import Layout from "./scenes/global";
 import ReportDetails from "./scenes/report-details";
 import History from "./scenes/report-history";
 import { ReportsContext, useReportsData } from "./global-state/useReportsData";
+import Reports from "./scenes/reports";
 
 function App() {
     const { reports, setReports } = useReportsData();
@@ -19,10 +20,8 @@ function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Dashboard />} />
                         <Route path="users" element={<Users />} />
-                        <Route
-                            path="report-history"
-                            element={<History />}
-                        ></Route>
+                        <Route path="reports" element={<Reports />} />
+                        <Route path="report-history" element={<History />} />
                         <Route
                             path="report-history/report-details/:id"
                             element={<ReportDetails />}
