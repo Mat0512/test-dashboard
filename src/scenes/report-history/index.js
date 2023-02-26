@@ -19,6 +19,7 @@ import { ReportsContext } from "../../global-state/useReportsData";
 const History = () => {
     const { reports } = useContext(ReportsContext);
     const { historyReports, isHistoryLoading } = useHistoryReports(reports);
+    console.log("history: ", historyReports);
     const navigate = useNavigate();
 
     return (
@@ -53,7 +54,7 @@ const History = () => {
                             </TableHead>
                             <TableBody>
                                 {historyReports.map((row) => (
-                                    <TableRow key={row.id}>
+                                    <TableRow key={row.reportId}>
                                         <TableCell align="left">
                                             {row.date}
                                         </TableCell>
@@ -74,7 +75,7 @@ const History = () => {
                                                 variant="contained"
                                                 onClick={() => {
                                                     navigate(
-                                                        `/report-details/${row.id}`
+                                                        `/report-details/${row.reportId}`
                                                     );
                                                 }}
                                             >

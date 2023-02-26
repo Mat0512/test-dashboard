@@ -15,7 +15,7 @@ const ReportDetails = () => {
     const [matchedData, setMatchedData] = useState(null);
 
     useEffect(() => {
-        const match = reports.filter((report) => report.id === id);
+        const match = reports.filter((report) => report.reportId === id);
 
         setMatchedData(match[0]);
     }, [reports]);

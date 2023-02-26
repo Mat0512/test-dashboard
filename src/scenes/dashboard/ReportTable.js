@@ -37,7 +37,7 @@ const ReportTable = ({ data }) => {
                 <TableBody>
                     {data.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell align="left">{row.id}</TableCell>
+                            <TableCell align="left">{row.reportId}</TableCell>
 
                             <TableCell align="left">{row.date}</TableCell>
                             <TableCell align="left">{row.addresss}</TableCell>
@@ -47,7 +47,7 @@ const ReportTable = ({ data }) => {
                                 <Button
                                     variant="contained"
                                     onClick={() => {
-                                        navigate(`/report-details/${row.id}`);
+                                        navigate(`/report-details/${row.reportId}`);
                                     }}
                                 >
                                     <Typography fontSize="12px">
