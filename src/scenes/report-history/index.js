@@ -35,6 +35,8 @@ const History = () => {
                             marginTop: "20px",
                             border: "1px solid #dcdcdc",
                             height: "400px",
+                            backgroundColor: "#f2f3f5",
+                            borderRadius: "10px",
                         }}
                     >
                         <Table>
@@ -53,39 +55,41 @@ const History = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {historyReports.map((row) => (
-                                    <TableRow key={row.reportId}>
-                                        <TableCell align="left">
-                                            {row.date}
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            {row.address}
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            {row.fname}
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            {row.con}
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            {row.status || "-"}
-                                        </TableCell>
-                                        <TableCell align="left">
-                                            <Button
-                                                variant="contained"
-                                                onClick={() => {
-                                                    navigate(
-                                                        `/report-details/${row.reportId}`
-                                                    );
-                                                }}
-                                            >
-                                                <Typography fontSize="12px">
-                                                    View
-                                                </Typography>
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
+                                {historyReports
+                                    .filter((report) => report.status !== "")
+                                    .map((row, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell align="left">
+                                                {row.date}
+                                            </TableCell>
+                                            <TableCell align="left">
+                                                {row.address}
+                                            </TableCell>
+                                            <TableCell align="left">
+                                                {row.fname}
+                                            </TableCell>
+                                            <TableCell align="left">
+                                                {row.con}
+                                            </TableCell>
+                                            <TableCell align="left">
+                                                {row.status}
+                                            </TableCell>
+                                            <TableCell align="left">
+                                                <Button
+                                                    variant="contained"
+                                                    onClick={() => {
+                                                        navigate(
+                                                            `/report-details/${row.userReportId}`
+                                                        );
+                                                    }}
+                                                >
+                                                    <Typography fontSize="12px">
+                                                        View
+                                                    </Typography>
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                             </TableBody>
                         </Table>
                     </TableContainer>

@@ -15,13 +15,16 @@ const ReportDetails = () => {
     const [matchedData, setMatchedData] = useState(null);
 
     useEffect(() => {
-        const match = reports.filter((report) => report.reportId === id);
-
+        const match = reports.filter((report) => report.userReportId === id);
+        console.log("matched: ", match);
         setMatchedData(match[0]);
     }, [reports]);
 
     const setReportStatus = (status) => {
-        const reportRef = ref(db, `Incoming report/${matchedData.id}`);
+        const reportRef = ref(
+            db,
+            `Incoming report/${matchedData.reportId}/${matchedData.userReportId}`
+        );
         const updateData = { ...matchedData, status: status };
         set(reportRef, updateData)
             .then(() => {

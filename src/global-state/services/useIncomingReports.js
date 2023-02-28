@@ -11,6 +11,7 @@ export const useIncomingReports = (reports) => {
         const incomingRep = reports.filter(
             (report) => report.status == "pending"
         );
+        console.log("pendings: ", incomingRep);
         setIncomingReports(incomingRep);
         setIncomingCount(incomingRep.length);
         setIsReportLoading(false);

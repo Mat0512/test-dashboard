@@ -20,6 +20,8 @@ const ReportTable = ({ data }) => {
             sx={{
                 border: "1px solid #dcdcdc",
                 height: "400px",
+                backgroundColor: "#f2f3f5",
+                borderRadius: "10px",
             }}
         >
             <Table>
@@ -35,9 +37,11 @@ const ReportTable = ({ data }) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell align="left">{row.reportId}</TableCell>
+                    {data.map((row, index) => (
+                        <TableRow key={index}>
+                            <TableCell align="left">
+                                {row.userReportId}
+                            </TableCell>
 
                             <TableCell align="left">{row.date}</TableCell>
                             <TableCell align="left">{row.addresss}</TableCell>
@@ -47,7 +51,9 @@ const ReportTable = ({ data }) => {
                                 <Button
                                     variant="contained"
                                     onClick={() => {
-                                        navigate(`/report-details/${row.reportId}`);
+                                        navigate(
+                                            `/report-details/${row.userReportId}`
+                                        );
                                     }}
                                 >
                                     <Typography fontSize="12px">

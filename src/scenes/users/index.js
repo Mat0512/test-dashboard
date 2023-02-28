@@ -113,6 +113,9 @@ const Users = () => {
                     rowsPerPageOptions={[5]}
                     disableSelectionOnClick
                     experimentalFeatures={{ newEditingApi: true }}
+                    sx={{
+                        backgroundColor: "#f2f3f5",
+                    }}
                 />
             </Box>
 

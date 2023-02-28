@@ -11,15 +11,14 @@ const StatCard = ({ icon, count, countLabel, bgColor }) => {
             height="100px"
             p="15px"
             backgroundColor={bgColor}
-            color="#ffffff"
             borderRadius="10px"
         >
             {icon}
             <Box ml="10px">
-                <Typography fontSize="24px" lineHeight={1}>
-                    {count}
+                <Typography color="#ffffff" fontSize="24px" lineHeight={1}>
+                    {count || 0}
                 </Typography>
-                <Typography fontSize="14px" lineHeight={1}>
+                <Typography color="#ffffff" fontSize="14px" lineHeight={1}>
                     {countLabel}
                 </Typography>
             </Box>

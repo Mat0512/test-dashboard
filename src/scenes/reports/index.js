@@ -29,13 +29,7 @@ const Reports = () => {
             {isTotalReportsLoading ? (
                 "loading..."
             ) : (
-                <Box
-                    width="100%"
-                    height="100%"
-                    display="flex"
-                    flexDirection="column"
-                    gap={1}
-                >
+                <Box width="100%" display="flex" flexDirection="column" gap={1}>
                     <Box
                         width="100%"
                         display="flex"

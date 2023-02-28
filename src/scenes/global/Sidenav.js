@@ -12,7 +12,7 @@ const Sidenav = () => {
     const { collapseSidebar, collapsed } = useProSidebar();
 
     return (
-        <Box height="100vh" display="flex" backgroundColor="#ffffed">
+        <Box height="100vh" display="flex">
             <Sidebar>
                 <Box
                     display="flex"
