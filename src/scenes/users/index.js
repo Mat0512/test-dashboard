@@ -7,7 +7,7 @@ import { ref, remove } from "firebase/database";
 import { db } from "../../config/firebase";
 
 import EditForm from "./EditForm";
-import { useUserList } from "../../global-state/services/useUserList";
+import { useUserList } from "../../services/users/useUserList";
 
 const usersRef = ref(db, "Registered Users");
 const Users = () => {
@@ -22,11 +22,12 @@ const Users = () => {
     };
 
     const deleteUser = (row) => {
-        const deleteUserRef = ref(db, `Registered Users/${data.id}`);
+        const deleteUserRef = ref(db, `Registered Users/${row.id}`);
         remove(deleteUserRef)
             .then(() => alert("Deleted"))
             .catch((err) => alert("Error occured on deleting."));
     };
+
     const columns = [
         { field: "id", headerName: "ID", width: 100, editable: true },
         {

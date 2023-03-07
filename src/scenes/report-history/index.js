@@ -13,8 +13,8 @@ import LoadingNotif from "../../components/LoadingNotif";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import { useContext } from "react";
-import { useHistoryReports } from "../../global-state/services/useHistoryReports";
-import { ReportsContext } from "../../global-state/useReportsData";
+import { useHistoryReports } from "../../services/reports/useHistoryReports";
+import { ReportsContext } from "../../services/reports/useReportsData";
 
 const History = () => {
     const { reports } = useContext(ReportsContext);
@@ -55,41 +55,39 @@ const History = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {historyReports
-                                    .filter((report) => report.status !== "")
-                                    .map((row, index) => (
-                                        <TableRow key={index}>
-                                            <TableCell align="left">
-                                                {row.date}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                {row.address}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                {row.fname}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                {row.con}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                {row.status}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                <Button
-                                                    variant="contained"
-                                                    onClick={() => {
-                                                        navigate(
-                                                            `/report-details/${row.userReportId}`
-                                                        );
-                                                    }}
-                                                >
-                                                    <Typography fontSize="12px">
-                                                        View
-                                                    </Typography>
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
+                                {historyReports.map((report, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell align="left">
+                                            {report.date}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            {report.addresss}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            {report.fname}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            {report.con}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            {report.status}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            <Button
+                                                variant="contained"
+                                                onClick={() => {
+                                                    navigate(
+                                                        `/report-details/${report.userReportId}`
+                                                    );
+                                                }}
+                                            >
+                                                <Typography fontSize="12px">
+                                                    View
+                                                </Typography>
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>

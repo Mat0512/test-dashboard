@@ -3,10 +3,9 @@ import Header from "../../components/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import { Box, Typography, Button } from "@mui/material";
 import { useEffect, useContext, useState } from "react";
-import { ReportsContext } from "../../global-state/useReportsData";
+import { ReportsContext } from "../../services/reports/useReportsData";
 import { ref, set } from "firebase/database";
 import { db } from "../../config/firebase";
-import BarChart from "../reports/BarChart";
 
 const ReportDetails = () => {
     const { reports } = useContext(ReportsContext);
@@ -56,7 +55,7 @@ const ReportDetails = () => {
                         }
                     />
 
-                    <Typography>{`Report ID: ${matchedData.id}`}</Typography>
+                    <Typography>{`Report ID: ${matchedData.userReportId}`}</Typography>
                     <Box display="flex" gap={4}>
                         <div>
                             <Typography fontSize="14px">{`Reporter Name:  ${matchedData.fname}`}</Typography>

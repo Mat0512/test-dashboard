@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef } from "react";
-import { useAggregatedByTimeReports } from "../../global-state/services/useAggregatedByTimeReport";
-import { ReportsContext } from "../../global-state/useReportsData";
+import { useAggregatedByTimeReports } from "../../services/reports/useAggregatedByTimeReport";
+import { ReportsContext } from "../../services/reports/useReportsData";
 import Header from "../../components/Header";
 import {
     FormControl,

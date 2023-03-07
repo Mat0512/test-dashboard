@@ -6,7 +6,10 @@ import Users from "./scenes/users";
 import Layout from "./scenes/global";
 import ReportDetails from "./scenes/report-details";
 import History from "./scenes/report-history";
-import { ReportsContext, useReportsData } from "./global-state/useReportsData";
+import {
+    ReportsContext,
+    useReportsData,
+} from "./services/reports/useReportsData";
 import Reports from "./scenes/reports";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./config/theme";
